@@ -6,14 +6,14 @@ public class GameWorld {
 	Location[][] map;
 	private int posX;
 	private int posY;
-	private String currentPlayerName;
+	private PlayerCharacter currentPlayer;
 	Location currentPos;
 	
-	public GameWorld(int x, int y,String playername){
+	public GameWorld(int x, int y,PlayerCharacter player){
 		map = new Location[x][y];
 		capacityX = (x-1);
 		capacityY = (y-1);
-		this.currentPlayerName = playername;
+		this.currentPlayer = player;
 		map[3][4] = new Location();
 		map[4][3] = new Location();
 		map[4][4] = new Location();
@@ -48,7 +48,7 @@ public class GameWorld {
 			RpgGame.GameUtils.AnimateText("-----");
 		}
 		
-		if(map[posX + 1][posY] != null && map[posX + 1][posY].accessRight != false){
+		if(map[posX + 1][posY] != null && map[posX + 1][posY].accessLeft != false){
 			//MoveEast();
 			System.out.print("(1) ");
 			RpgGame.GameUtils.AnimateText("East");
@@ -65,7 +65,7 @@ public class GameWorld {
 			System.out.print("(2) ");
 			RpgGame.GameUtils.AnimateText("-----");
 		}
-		if(map[posX - 1][posY] != null && map[posX - 1][posY].accessLeft != false){
+		if(map[posX - 1][posY] != null && map[posX - 1][posY].accessRight != false){
 			//MoveWest();
 			System.out.print("(3) ");
 			RpgGame.GameUtils.AnimateText("West");
@@ -109,7 +109,7 @@ public class GameWorld {
 		if(map[posX][posY - 1].accessBottom == true){
 			posY--;
 			currentPos = map[posX][posY - 1];
-			
+			System.out.println(posX + " " + posY);
 		}
 	}
 	private void MoveNorthWest(){
@@ -117,6 +117,7 @@ public class GameWorld {
 			posX--;
 			posY--;
 			currentPos = map[posX - 1][posY - 1];
+			System.out.println(posX + " " + posY);
 		}
 	}
 	private void MoveNorthEast(){
@@ -124,6 +125,7 @@ public class GameWorld {
 			posX++;
 			posY--;
 			currentPos = map[posX + 1][posY - 1];
+			System.out.println(posX + " " + posY);
 		}
 	}
 
@@ -131,6 +133,7 @@ public class GameWorld {
 		if(map[posX][posY + 1].accessTop == true){
 			posY++;
 			currentPos = map[posX][posY + 1];
+			System.out.println(posX + " " + posY);
 		}
 	}
 	private void MoveSouthWest(){
@@ -138,6 +141,7 @@ public class GameWorld {
 			posX--;
 			posY++;
 			currentPos = map[posX - 1][posY + 1];
+			System.out.println(posX + " " + posY);
 		}
 	}
 	private void MoveSouthEast(){
@@ -145,19 +149,22 @@ public class GameWorld {
 			posX++;
 			posY++;
 			currentPos = map[posX + 1][posY + 1];
+			System.out.println(posX + " " + posY);
 		}
 	}
 		
 	private void MoveWest(){
 		if(map[posX - 1][posY].accessRight == true){
-			posX++;
+			posX--;
 			currentPos = map[posX - 1][posY];
+			System.out.println(posX + " " + posY);
 		}
 	}
 	private void MoveEast(){
 		if(map[posX + 1][posY].accessLeft == true){
 			posX++;
 			currentPos = map[posX + 1][posY];
+			System.out.println(posX + " " + posY);
 		}
 	}
 }

@@ -7,7 +7,7 @@ public class RpgGame {
 			for(char element : textani){
 				System.out.print(element);
 				try {
-					Thread.sleep(125);
+					Thread.sleep(0);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -43,11 +43,16 @@ public class RpgGame {
 		// TODO Auto-generated method stub
 
 		StoryArc storyarc = new StoryArc();
+		
+
+		
 		storyarc.DisplayStartMenu();
 		storyarc.getPlayerCharacter();
-		GameWorld gameworld = new GameWorld(10,10,storyarc.getPlayerCharacter().getPlayerName());
-		gameworld.Move();
 		
+		storyarc.CreateTheGameWorld();
+		while(1 == 1){
+		storyarc.DisplayGamePlayMenu();
+		}
 	}
 
 }

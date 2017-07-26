@@ -22,7 +22,7 @@ public class Location {
 		accessTop = true;
 		accessBottom = true;
 		accessLeft = true;
-		accessRight = false;
+		accessRight = true;
 	}
 	//ID
 	public String getId(){
